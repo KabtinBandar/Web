@@ -1,14 +1,19 @@
 
-let txtEGP = document.getElementById('txtEGP');
-let txtUSD = document.getElementById('txtUSD');
-let txtUser = document.getElementById('Username');
-txtUser.value = 'Ahmed' 
-txtUSD.onkeyup =  function(){
-txtEGP.value = txtUSD.value * 47;
-console.log("EGP : "+txtEGP.value);
-}
-txtEGP.onkeyup =  function(){
-  txtUSD.value = txtEGP.value * 47;
-  console.log("USD : "+txtUSD.value);
-  }
-  
+let After = document.getElementById('after');
+let Before = document.getElementById('before');
+let Append = document.getElementById('append');
+let content = document.getElementById('content');
+let Contenier = document.getElementById('Container');
+Contenier.style.backgroundColor = "black";
+content.style.color = 'red';
+Contenier.style.height = '50px';
+Contenier.style.width = '200px';
+After.addEventListener('click' , function(){
+Contenier.after(content);
+});
+Before.addEventListener('click' , function(){
+  Contenier.before(content);
+  });
+  Append.addEventListener('click' , function(){
+    Contenier.append(content);
+    });
