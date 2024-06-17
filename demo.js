@@ -59,8 +59,14 @@ function showData() {
   for (let i = 0; i < DatePro.length; i++) {
     table +=
       '<tr><td>'+i+'</td><td>'+DatePro[i].title+'</td><td>'+DatePro[i].price+'</td><td>'+DatePro[i].taxes+'<td>'+DatePro[i].ads+'</td><td>'+DatePro[i].discount+'</td><td>'+DatePro[i].total+'</td><td>'+DatePro[i].catgory+'</td><td><button id="update">update</button></td><td><button onclick = deleteData('+i+') id="delete">delete</button></td></tr>';
-  }
+  }  
   document.getElementById("tbody").innerHTML = table;
+  let btnDelete = document.getElementById('deleteAll');
+  if (DatePro.length > 0){
+    btnDelete.innerHTML = '<button id="deleteAll">deleteAll</button>';
+  }else{
+    btnDelete.innerHTML = '';
+  }
 }
 showData();
 
