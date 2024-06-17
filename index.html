@@ -4,31 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURD</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+<div class="crud">
 
-    <button id="btn">^</button>
-    <button id="btn2">Click</button>
-    <div class="gallary">
-        <div class="photos">
-            <img onclick ="main.src = this.src" src = "img/1.jpg"alt="...">
-            <img onclick ="main.src = this.src" src = "img/2.jpg"alt="...">
-            <img onclick ="main.src = this.src" src = "img/3.jpg"alt="...">
-            <img onclick ="main.src = this.src" src = "img/4.jpg"alt="...">
-        </div>
-        <div class="main">
-            <img src="img/1.jpg" name = "main" alt="...">
-        </div>
 
-        <div class="photos">
-            <img onmouseenter ="main.src = this.src" src = "img/1.jpg"alt="...">
-            <img onmouseenter ="main.src = this.src" src = "img/2.jpg"alt="...">
-            <img onmouseenter ="main.src = this.src" src = "img/3.jpg"alt="...">
-            <img onmouseenter ="main.src = this.src" src = "img/4.jpg"alt="...">
-        </div>
+
+<div class="head">
+<h2>CURD</h2>
+<p>Product MANAGMENT SYSTEM</p>
+</div>
+
+
+
+<div class="inputs">
+<input type="text" id="title" placeholder="title">
+<div class="price">
+    <input type="number" id="price" placeholder="price">
+    <input type="number" id="taxes" placeholder="taxes">
+    <input type="number" id="ads" placeholder="ads">
+    <input type="number" id="discount" placeholder="discount">
+    <small id="total">545646</small>
+</div>
+<input type="number" id="count" placeholder="count">
+<input type="text" id="catgory" placeholder="catgory">
+<button id="submit">Create</button>
+</div>
+
+
+
+<div class="outputs">
+<div class="searchBlock">
+
+    <input type="text" id="Search" placeholder="Search">
+    <div class="btnSearch">
+<button id="SearchTitle">Search by Title</button>
+<button id="SearchCategory">Search by Category</button>
     </div>
+</div>
+
+</div>
+<table>
+<tr>
+<th>id</th>
+<th>title</th>
+<th>price</th>
+<th>taxes</th>
+<th>ads</th>
+<th>discount</th>
+<th>total</th>
+<th>catgory</th>
+<th>Update</th>
+<th>delete</th>
+</tr>
+<tbody>
+<tr>
+    <td>1</td>
+    <td>samsung</td>
+    <td>2000</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>2100</td>
+    <td>Phone</td>
+    <td><button id="update">update</button></td>
+    <td><button id="delete">delete</button></td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>samsung</td>
+    <td>2000</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>2100</td>
+    <td>Phone</td>
+    <td><button id="update">update</button></td>
+    <td><button id="delete">delete</button></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>samsung</td>
+    <td>2000</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>2100</td>
+    <td>Phone</td>
+    <td><button id="update">update</button></td>
+    <td><button id="delete">delete</button></td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>samsung</td>
+    <td>2000</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>2100</td>
+    <td>Phone</td>
+    <td><button id="update">update</button></td>
+    <td><button id="delete">delete</button></td>
+</tr>
+</tbody>
+</table>
+</div>
 
 </body>
 <script src="demo.js"></script>
