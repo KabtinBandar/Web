@@ -37,7 +37,14 @@ btnSumbit.onclick = function() {
     count: count.value,
     catgory: catgory.value
   };
-  DatePro.push(newPro);
+  if (newPro.count > 1) {
+    for (let i = 0; i < newPro.count; i++) {
+      DatePro.push(newPro);
+    }
+  } else {
+    DatePro.push(newPro);
+  }
+
   localStorage.setItem("Product", JSON.stringify(DatePro));
   ClrearData();
   showData();
@@ -58,22 +65,44 @@ function showData() {
   let table = "";
   for (let i = 0; i < DatePro.length; i++) {
     table +=
-      '<tr><td>'+i+'</td><td>'+DatePro[i].title+'</td><td>'+DatePro[i].price+'</td><td>'+DatePro[i].taxes+'<td>'+DatePro[i].ads+'</td><td>'+DatePro[i].discount+'</td><td>'+DatePro[i].total+'</td><td>'+DatePro[i].catgory+'</td><td><button id="update">update</button></td><td><button onclick = deleteData('+i+') id="delete">delete</button></td></tr>';
-  }  
+      "<tr><td>" +
+      i +
+      "</td><td>" +
+      DatePro[i].title +
+      "</td><td>" +
+      DatePro[i].price +
+      "</td><td>" +
+      DatePro[i].taxes +
+      "<td>" +
+      DatePro[i].ads +
+      "</td><td>" +
+      DatePro[i].discount +
+      "</td><td>" +
+      DatePro[i].total +
+      "</td><td>" +
+      DatePro[i].catgory +
+      '</td><td><button id="update">update</button></td><td><button onclick = deleteData(' +
+      i +
+      ') id="delete">delete</button></td></tr>';
+  }
   document.getElementById("tbody").innerHTML = table;
-  let btnDelete = document.getElementById('deleteAll');
-  if (DatePro.length > 0){
-    btnDelete.innerHTML = '<button id="deleteAll">deleteAll</button>';
-  }else{
-    btnDelete.innerHTML = '';
+  let btnDelete = document.getElementById("deleteAll");
+  if (DatePro.length > 0) {
+    btnDelete.innerHTML = '<button onclick = "deleteAll()">deleteAll('+DatePro.length+')</button>';
+  } else {
+    btnDelete.innerHTML = "";
   }
 }
 showData();
 
+function deleteData(i) {
+  DatePro.splice(i, 1);
+  localStorage.Product = JSON.stringify(DatePro);
+  showData();
+}
 
-function deleteData(i){
-DatePro.splice(i,1);
-localStorage.Product = JSON.stringify(DatePro);
-showData();
-};
-
+function deleteAll() {
+  localStorage.clear();
+  DatePro.splice(0);
+  showData();
+}
