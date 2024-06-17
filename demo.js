@@ -15,6 +15,5 @@ behavior :"smooth"
 });
 }
 btn2.onclick = function(){
-
-
+location.assign('https://www.youtube.com/');
 }
