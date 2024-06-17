@@ -7,7 +7,8 @@ let count = document.getElementById("count");
 let total = document.getElementById("total");
 let catgory = document.getElementById("catgory");
 let btnSumbit = document.getElementById("submit");
-
+let tmp;
+let mode = 'Create';
 //get total
 function get_total() {
   if (price.value != "") {
@@ -27,7 +28,8 @@ if (localStorage.Product != null) {
 }
 
 btnSumbit.onclick = function() {
-  let newPro = {
+ 
+    let newPro = {
     title: title.value,
     price: price.value,
     taxes: taxes.value,
@@ -37,12 +39,20 @@ btnSumbit.onclick = function() {
     count: count.value,
     catgory: catgory.value
   };
-  if (newPro.count > 1) {
-    for (let i = 0; i < newPro.count; i++) {
-      DatePro.push(newPro);
-    }
-  } else {
-    DatePro.push(newPro);
+  if (mode == 'Create'){
+    if (newPro.count > 1) {
+        for (let i = 0; i < newPro.count; i++) {
+          DatePro.push(newPro);
+        }
+      } else {
+        DatePro.push(newPro);
+      }
+  }else{
+
+    DatePro[tmp] = newPro;
+    mode = 'Create';
+    btnSumbit.innerHTML = 'Create';
+    count.style.display = 'block';
   }
 
   localStorage.setItem("Product", JSON.stringify(DatePro));
@@ -81,7 +91,7 @@ function showData() {
       DatePro[i].total +
       "</td><td>" +
       DatePro[i].catgory +
-      '</td><td><button id="update">update</button></td><td><button onclick = deleteData(' +
+      '</td><td><button onclick = "UpdateData('+i+')" id="update">update</button></td><td><button onclick = deleteData(' +
       i +
       ') id="delete">delete</button></td></tr>';
   }
@@ -105,4 +115,24 @@ function deleteAll() {
   localStorage.clear();
   DatePro.splice(0);
   showData();
+}
+
+function UpdateData(i) {
+title.value = DatePro[i].title;
+price.value = DatePro[i].price;
+taxes.value = DatePro[i].taxes;
+ads.value = DatePro[i].ads;
+discount.value = DatePro[i].discount;
+catgory.value = DatePro[i].catgory;
+count.style.display = 'none';
+get_total();
+btnSumbit.innerHTML = 'Update';
+mode = 'Update';
+tmp = i;
+scroll({
+top : 0,
+behavior : 'smooth'
+
+});
+
 }
