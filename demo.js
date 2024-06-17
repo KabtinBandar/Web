@@ -38,7 +38,9 @@ btnSumbit.onclick = function() {
     count: count.value,
     catgory: catgory.value.toLowerCase()
   };
-  if (mode == "Create") {
+
+  if (title.value != '' && price.value != '' && catgory.value != '' && newPro.count < 100) {
+   if (mode == "Create") {
     if (newPro.count > 1) {
       for (let i = 0; i < newPro.count; i++) {
         DatePro.push(newPro);
@@ -51,7 +53,12 @@ btnSumbit.onclick = function() {
     mode = "Create";
     btnSumbit.innerHTML = "Create";
     count.style.display = "block";
+  } 
+  }else{
+    ClrearData();
+    alert('Enter your filed all');
   }
+  
 
   localStorage.setItem("Product", JSON.stringify(DatePro));
   ClrearData();
@@ -74,7 +81,7 @@ function showData() {
   for (let i = 0; i < DatePro.length; i++) {
     table +=
       "<tr><td>" +
-      i +
+      (i + 1) +
       "</td><td>" +
       DatePro[i].title +
       "</td><td>" +
@@ -212,6 +219,6 @@ function searchData(value) {
       }
     }
   }
-  
+
   document.getElementById("tbody").innerHTML = table;
 }
